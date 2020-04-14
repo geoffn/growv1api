@@ -1,7 +1,10 @@
-const { getFoodBankAll } = require("./foodBank.controller");
+const { getFoodBankAll, createFoodBank } = require("./foodBank.controller");
 
 const foodBankRouter = require("express").Router();
 
-foodBankRouter.get("/api/foodbank", getFoodBankAll);
+foodBankRouter.get("/", getFoodBankAll);
+foodBankRouter.post("/", createFoodBank);
+
+console.log("in router");
 
 module.exports = foodBankRouter;
