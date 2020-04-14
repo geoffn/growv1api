@@ -1,4 +1,3 @@
-//const mysql = require("mysql");
 
 
 //only imports the createPool method
