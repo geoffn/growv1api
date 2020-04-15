@@ -55,8 +55,21 @@ module.exports = {
 
             }
         )
-    }
+    },
 
+    getFoodBankById: (id, callBack) => {
+        foodBankPool.query(
+            "select FoodBankParentId, FoodBankName, Address1, Address2, City, StateRegion, CountryId, addressCode, Other, Latitude, Longitude, CreateDate, ModifyDate, IsDeleted from FoodBank where FoodBankId = ?;",
+            [id],
+            (errors, results, fields) => {
+                if (errors) {
+                    return callBack(errors);
+                }
+                return callBack(null, results);
+            }
+        )
+    }
 }
+
 
 

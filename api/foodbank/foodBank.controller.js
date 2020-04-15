@@ -1,4 +1,4 @@
-const { getFoodBankAll, createFoodBank } = require("./foodBank.service");
+const { getFoodBankAll, createFoodBank, getFoodBankById } = require("./foodBank.service");
 
 
 module.exports = {
@@ -33,6 +33,22 @@ module.exports = {
                 message: "inserted"
             });
         });
+    },
+
+    getFoodBankById: (req, res) => {
+        const id = req.params.id;
+        getFoodBankById(id, (err, results) => {
+            if (err) {
+                return res.status(500).json({
+                    success: 0,
+                    message: "Error getting food bank by id"
+                });
+            }
+            return res.status(200).json({
+                success: 1,
+                data: results
+            });
+        })
     }
 
 }
