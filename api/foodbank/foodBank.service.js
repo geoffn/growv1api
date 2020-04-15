@@ -8,7 +8,7 @@ module.exports = {
 
     getFoodBankAll: callBack => {
         foodBankPool.query(
-            "select FoodBankParentId, FoodBankName, Address1, Address2, City, StateRegion, CountryId, addressCode, Other, Latitude, Longitude, CreateDate, ModifyDate, IsDeleted from FoodBank;",
+            "select FoodBankId, FoodBankParentId, FoodBankName, Address1, Address2, City, StateRegion, CountryId, addressCode, Other, Latitude, Longitude, CreateDate, ModifyDate, IsDeleted from FoodBank;",
             [],
             (errors, results, fields) => {
                 if (errors) {
@@ -61,6 +61,45 @@ module.exports = {
         foodBankPool.query(
             "select FoodBankParentId, FoodBankName, Address1, Address2, City, StateRegion, CountryId, addressCode, Other, Latitude, Longitude, CreateDate, ModifyDate, IsDeleted from FoodBank where FoodBankId = ?;",
             [id],
+            (errors, results, fields) => {
+                if (errors) {
+                    return callBack(errors);
+                }
+                return callBack(null, results);
+            }
+        )
+    },
+
+    deleteFoodBank: (id, callBack) => {
+        foodBankPool.query(
+            "delete from FoodBank where FoodBankId = ?",
+            [id],
+            (errors, results, fields) => {
+                if (errors) {
+                    return callBack(errors);
+                }
+                return callBack(null, results);
+            }
+        )
+    },
+
+    updateFoodBank: (data, callBack) => {
+        foodBankPool.query(
+            "update FoodBank set FoodBankName = ?, Address1 = ?, Address2 = ?, City = ?, StateRegion = ?, CountryId = ?, addressCode = ?, Other = ?, Latitude = ?, Longitude = ?,  ModifyDate = ?  where FoodBankId = ? ",
+            [
+                data.FoodBankName,
+                data.Address1,
+                data.Address2,
+                data.City,
+                data.StateRegion,
+                data.CountryId,
+                data.addressCode,
+                data.Other,
+                data.Latitude,
+                data.Longitude,
+                MOMENT().format('YYYY-MM-DD  HH:mm:ss.000'),
+                data.FoodBankId
+            ],
             (errors, results, fields) => {
                 if (errors) {
                     return callBack(errors);
