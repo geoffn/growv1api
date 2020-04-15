@@ -8,10 +8,11 @@ module.exports = {
 
     getFoodBankAll: callBack => {
         foodBankPool.query(
-            "select FoodBankId, FoodBankParentId, FoodBankName, Address1, Address2, City, StateRegion, CountryId, addressCode, Other, Latitude, Longitude, CreateDate, ModifyDate, IsDeleted from FoodBank;",
-            [],
+            "select FoodBankId, FoodBankParentId, FoodBankName, Address1, Address2, City, StateRegion, CountryId, addressCode, Other, Latitude, Longitude, CreateDate, ModifyDate, IsDeleted from FoodBank where IsDeleted = ?;",
+            [false],
             (errors, results, fields) => {
                 if (errors) {
+                    console.log(errors);
                     return callBack(errors);
                 }
 
@@ -45,7 +46,7 @@ module.exports = {
                 data.Longitude,
                 MOMENT().format('YYYY-MM-DD  HH:mm:ss.000'),
                 MOMENT().format('YYYY-MM-DD  HH:mm:ss.000'),
-                true
+                false
             ],
             (errors, results, fields) => {
                 if (errors) {
@@ -72,8 +73,12 @@ module.exports = {
 
     deleteFoodBank: (id, callBack) => {
         foodBankPool.query(
-            "delete from FoodBank where FoodBankId = ?",
-            [id],
+            "update FoodBank set IsDeleted = ?, ModifyDate = ?  where FoodBankId = ?",
+            [
+                true,
+                MOMENT().format('YYYY-MM-DD  HH:mm:ss.000'),
+                id
+            ],
             (errors, results, fields) => {
                 if (errors) {
                     return callBack(errors);
