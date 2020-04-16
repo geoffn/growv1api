@@ -1,0 +1,33 @@
+create table Users(
+    UserId int NOT NULL AUTO_INCREMENT Primary Key,
+    FirstName varchar(255) NOT NULL,
+    LastName varchar(255) NOT NULL,
+    Address1 varchar(255),
+    Address2 varchar(255),
+    City varchar(255),
+    StateRegion varchar(255),
+    CountryId varchar(10),
+    AddressCode varchar(10) NOT NULL,
+    Other varchar(255),
+    Latitude float,
+    Longitude float,
+    PhoneNumber varchar(100),
+    Password varchar(255),
+    PasswordDate timestamp NOT NULL,
+    PasswordFailedAttempts int NOT NULL,
+    AllowPushNotications char(1) NOT NULL,
+    AllowNewsLetter char(1) NOT NULL,
+    ALLOWSMS char(1) NOT NULL,
+    AllowEmail char(1) NOT NULL,
+    CreateDate timestamp NOT NULL,
+    ModifyDate timestamp NOT NULL,
+    IsDeleted char(1) NOT NULL
+);
+
+--insert
+insert into Users (Firstname, LastName, Address1, Address2, City, StateRegion, CountryId, AddressCode, Other, Latitude, Longitude,
+PhoneNumber, Password, PasswordDate, PasswordFailedAttempts, AllowPushNotications, AllowNewsLetter, ALLOWSMS, AllowEmail,
+CreateDate, ModifyDate, IsDeleted) values
+('First1', 'Last1','1111 whitewater dr.', null, 'Bellingham','WA','01','98229',null,null, null,
+'111-111-1111', 'Password111',now(),0,false, false, false, false, now(), now(), false);
+

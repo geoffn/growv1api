@@ -15,7 +15,8 @@ This is create
 
 update
 {
-    "FoodBankName": "FoodbankTest",
+    "FoodBankId" : 5
+    "FoodBankName": "FoodbankTestUYpdated",
         "Address1": "1212 some street",
             "Address2": null,
                 "City": "Bellingham",
