@@ -1,4 +1,4 @@
-const { createUser, getUsersAll, getUserById, updateUser } = require("./user.service");
+const { createUser, getUsersAll, getUserById, updateUser, deleteUser } = require("./user.service");
 
 module.exports = {
     createUser: (req, res) => {
@@ -70,6 +70,24 @@ module.exports = {
                 message: "User Updated"
             });
         });
+    },
+
+    deleteUser: (req, res) => {
+        const UserId = req.params.id;
+
+        deleteUser(UserId, (error, results) => {
+            if (error) {
+                return res.status(500).json({
+                    success: 0,
+                    message: "Error deleting user"
+                });
+
+            }
+            return res.status(200).json({
+                success: 1,
+                message: "User Deleted"
+            });
+        })
     }
 
 }
