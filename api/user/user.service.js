@@ -102,6 +102,24 @@ module.exports = {
             }
 
         )
+    },
+
+    deleteUser: (UserId, callBack) => {
+        UserPool.query(
+            "update users set ModifyDate=?, IsDeleted=? where UserId=?",
+            [
+                MOMENT().format('YYYY-MM-DD  HH:mm:ss.000'),
+                true,
+                UserId
+            ],
+            (error, results, fields) => {
+                if (error) {
+                    console.log(error);
+                    return callBack(error);
+                }
+                return callBack(null, results);
+            }
+        )
     }
 }
 

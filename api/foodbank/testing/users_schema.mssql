@@ -17,7 +17,7 @@ create table Users(
     PasswordFailedAttempts int NOT NULL,
     AllowPushNotications char(1) NOT NULL,
     AllowNewsLetter char(1) NOT NULL,
-    ALLOWSMS char(1) NOT NULL,
+    AllowSMS char(1) NOT NULL,
     AllowEmail char(1) NOT NULL,
     CreateDate timestamp NOT NULL,
     ModifyDate timestamp NOT NULL,
