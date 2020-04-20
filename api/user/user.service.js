@@ -54,6 +54,20 @@ module.exports = {
                 return callBack(null, results);
             }
         )
+    },
+
+    getUserById: (userId, callBack) => {
+        UserPool.query(
+            "select FirstName, LastName, Address1, Address2, City, StateRegion, CountryId, AddressCode, Other, Latitude, Longitude,PhoneNumber,AllowPushNotications, AllowNewsLetter, AllowSMS, AllowEmail, CreateDate from Users where UserId = ? and IsDeleted=?",
+            [userId, false],
+            (errors, results, fields) => {
+                if (errors) {
+                    console.log(errors);
+                    return callBack(errors);
+                }
+                return callBack(null, results);
+            }
+        )
     }
 }
 

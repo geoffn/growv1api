@@ -1,4 +1,4 @@
-const { createUser, getUsersAll } = require("./user.service");
+const { createUser, getUsersAll, getUserById } = require("./user.service");
 
 module.exports = {
     createUser: (req, res) => {
@@ -27,7 +27,29 @@ module.exports = {
                     message: "Error getting active users"
                 })
             };
-            return (res.status(200).json(results));
+            return (res.status(200).json({
+                succee: 1,
+                data: results
+            }));
+        });
+    },
+
+    getUserById: (req, res) => {
+        const userId = req.params.id;
+
+        getUserById(userId, (err, results) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json({
+                    success: 0,
+                    message: "Error getting user by id"
+                });
+
+            }
+            return res.status(200).json({
+                success: 0,
+                data: results
+            });
         });
     }
 
