@@ -31,3 +31,53 @@ CreateDate, ModifyDate, IsDeleted) values
 ('First1', 'Last1','1111 whitewater dr.', null, 'Bellingham','WA','01','98229',null,null, null,
 '111-111-1111', 'Password111',now(),0,false, false, false, false, now(), now(), false);
 
+[
+    "FirstName" : "FirstName2",
+    "LastName" : "LastName2",
+    "Address1" : "2222 User Lane",
+    "Address2" : null,
+    "City" : "Bellingham",
+    "StateRegion" : "WA",
+    "CountryId" : "01",
+    "AddressCode" : "98229",
+    "Other" : null,
+    "Latitude" : null,
+    "Longitude" : null,
+    "PhoneNumber" : "222-222-2222",
+    "Password" : "Password222",
+    "PasswordFailedAttempts": "0",
+    "AllowPushNotications" : true,
+    "AllowNewsLetter" : true,
+    "ALLOWSMS" : true,
+    "AllowEmail" : true
+
+]
+
+[
+                data.FirstName,
+                data.LastName,
+                data.Address1,
+                data.Address2,
+                data.City,
+                data.StateRegion,
+                data.CountryId,
+                data.AddressCode,
+                data.Other,
+                data.Latitude,
+                data.Longitude,
+                data.PhoneNumber,
+                data.Password,
+                MOMENT().format('YYYY-MM-DD  HH:mm:ss.000'),
+                data.PasswordFailedAttempts,
+                data.AllowPushNotications,
+                data.AllowNewsLetter,
+                data.AllowSMS,
+                data.AllowEmail,
+                MOMENT().format('YYYY-MM-DD  HH:mm:ss.000'),
+                MOMENT().format('YYYY-MM-DD  HH:mm:ss.000'),
+                false
+
+            ],
+
+            insert into Users (Firstname, LastName, Address1, Address2, City, StateRegion, CountryId, AddressCode, Other, Latitude, Longitude,PhoneNumber, Password, PasswordDate, PasswordFailedAttempts, AllowPushNotications, AllowNewsLetter, ALLOWSMS, AllowEmail, CreateDate, ModifyDate, IsDeleted) 
+            values(\'FirstName2\',\'LastName2\',\'2222 User Lane\',NULL,NULL,\'WA\',\'01\',\'01\',\'98229\',NULL,NULL,NULL,\'222-222-2222\',\'Password222\',\'2020-04-18  12:36:26.000\'); ' }
