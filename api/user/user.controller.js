@@ -1,4 +1,4 @@
-const { createUser, getUsersAll, getUserById } = require("./user.service");
+const { createUser, getUsersAll, getUserById, updateUser } = require("./user.service");
 
 module.exports = {
     createUser: (req, res) => {
@@ -49,6 +49,25 @@ module.exports = {
             return res.status(200).json({
                 success: 0,
                 data: results
+            });
+        });
+    },
+
+    updateUser: (req, res) => {
+        const body = req.body;
+
+        updateUser(body, (err, callBack) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json({
+                    success: 0,
+                    message: "Error updating user"
+                });
+
+            }
+            return res.status(200).json({
+                success: 1,
+                message: "User Updated"
             });
         });
     }
