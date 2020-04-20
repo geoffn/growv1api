@@ -58,7 +58,7 @@ module.exports = {
 
     getUserById: (userId, callBack) => {
         UserPool.query(
-            "select FirstName, LastName, Address1, Address2, City, StateRegion, CountryId, AddressCode, Other, Latitude, Longitude,PhoneNumber,AllowPushNotications, AllowNewsLetter, AllowSMS, AllowEmail, CreateDate from Users where UserId = ? and IsDeleted=?",
+            "select FirstName, LastName, Address1, Address2, City, StateRegion, CountryId, AddressCode, Other, Latitude, Longitude,PhoneNumber,AllowPushNotications, AllowNewsLetter, AllowSMS, AllowEmail, CreateDate, ModifyDate from Users where UserId = ? and IsDeleted=?",
             [userId, false],
             (errors, results, fields) => {
                 if (errors) {
@@ -67,6 +67,40 @@ module.exports = {
                 }
                 return callBack(null, results);
             }
+        )
+    },
+
+    updateUser: (data, callBack) => {
+        UserPool.query(
+            "update Users set FirstName=?, LastName=?, Address1=?, Address2=?, City=?, StateRegion=?, CountryId=?, AddressCode=?, Other=?, Latitude=?, Longitude=?,PhoneNumber=?, AllowPushNotications=?, AllowNewsLetter=?, AllowSMS=?, AllowEmail=?, ModifyDate=? where UserId=? ",
+            [
+                data.FirstName,
+                data.LastName,
+                data.Address1,
+                data.Address2,
+                data.City,
+                data.StateRegion,
+                data.CountryId,
+                data.AddressCode,
+                data.Other,
+                data.Latitude,
+                data.Longitude,
+                data.PhoneNumber,
+                data.AllowPushNotications,
+                data.AllowNewsLetter,
+                data.ALLOWSMS,
+                data.AllowEmail,
+                MOMENT().format('YYYY-MM-DD  HH:mm:ss.000'),
+                data.UserId
+            ],
+            (error, results, fields) => {
+                if (error) {
+                    console.log(error);
+                    return callBack(error);
+                }
+                return callBack(null, results);
+            }
+
         )
     }
 }

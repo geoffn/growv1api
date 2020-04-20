@@ -53,6 +53,50 @@ CreateDate, ModifyDate, IsDeleted) values
 
 ]
 
+----udpate
+
+[
+    
+     "FirstName" : "FirstName2",
+    "LastName" : "LastName2",
+    "Address1" : "2222 User Lane",
+    "Address2" : null,
+    "City" : "Bellingham",
+    "StateRegion" : "WA",
+    "CountryId" : "01",
+    "AddressCode" : "98229",
+    "Other" : null,
+    "Latitude" : null,
+    "Longitude" : null,
+    "PhoneNumber" : "222-222-2222",
+    "AllowPushNotications" : true,
+    "AllowNewsLetter" : true,
+    "ALLOWSMS" : true,
+    "AllowEmail" : true
+    "UserId": 2
+]
+    
+                   data.FirstName,
+                data.LastName,
+                data.Address1,
+                data.Address2,
+                data.City,
+                data.StateRegion,
+                data.CountryId,
+                data.AddressCode,
+                data.Other,
+                data.Latitude,
+                data.Longitude,
+                data.PhoneNumber,
+                data.AllowPushNotications,
+                data.AllowNewsLetter,
+                data.ALLOWSMS,
+                data.AllowEmail,
+                MOMENT().format('YYYY-MM-DD  HH:mm:ss.000'),
+                data.UserId
+]
+
+
 [
                 data.FirstName,
                 data.LastName,
