@@ -24,7 +24,7 @@ module.exports = {
                 data.PasswordFailedAttempts,
                 data.AllowPushNotications,
                 data.AllowNewsLetter,
-                data.ALLOWSMS,
+                data.AllowSMS,
                 data.AllowEmail,
                 MOMENT().format('YYYY-MM-DD  HH:mm:ss.000'),
                 MOMENT().format('YYYY-MM-DD  HH:mm:ss.000'),
@@ -88,7 +88,7 @@ module.exports = {
                 data.PhoneNumber,
                 data.AllowPushNotications,
                 data.AllowNewsLetter,
-                data.ALLOWSMS,
+                data.AllowSMS,
                 data.AllowEmail,
                 MOMENT().format('YYYY-MM-DD  HH:mm:ss.000'),
                 data.UserId

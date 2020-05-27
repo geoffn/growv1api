@@ -1,8 +1,12 @@
 const { createUser, getUsersAll, getUserById, updateUser, deleteUser } = require("./user.service");
+const { validate, ValidationError, Joi } = require('express-validation')
+
 
 module.exports = {
     createUser: (req, res) => {
         const userBody = req.body;
+
+        
         createUser(userBody, (err, results) => {
             if (err) {
                 console.log(err);
